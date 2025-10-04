@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ss skin and pedia clinic — Dr. Swati Gupta & Dr. Siddharth Agrawal</title>
+  <meta name="description" content="ss skin and pedia clinic: Dermatology and Pediatrics care by Dr. Swati Gupta (Dermatology) and Dr. Siddharth Agrawal (Pediatrics). Book appointments, view services, timings, and location." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" type="image/svg+xml" href="images/refined_favicon.svg" />
+
+  <style>
+    :root {
+      --primary: #ec4899; /* pink-500 */
+      --primary-dark: #db2777; /* pink-600 */
+      --accent: #f472b6; /* pink-400 */
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --bg: #fff1f2; /* rose-50 */
+      --card: #ffffff;
+      --ring: rgba(236, 72, 153, 0.25);
+      --shadow: 0 10px 20px rgba(219, 39, 119, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
+
+    a { color: var(--primary-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(255,255,255,0.8); border-bottom: 1px solid #e2e8f0; z-index: 50; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
+    .brand .logo { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,0.1); }
+    .brand .logo img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+    nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    nav a { font-weight: 600; color: var(--muted); }
+    nav a:hover { color: var(--primary-dark); }
+
+    /* Hero */
+    .hero { padding: 56px 0 28px; position: relative; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ec4899" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23medical)"/></svg>');
+      pointer-events: none;
+    }
+    .hero-card { background: linear-gradient(180deg, #fff, #ffe4e6); border: 1px solid #f1cfe0; border-radius: 16px; padding: 28px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; position: relative; z-index: 1; }
+    .hero h1 { margin: 0 0 10px; font-size: 36px; line-height: 1.15; }
+    .hero p { margin: 0 0 18px; color: var(--muted); }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 10px; border: 1px solid #f1cfe0; background: white; color: var(--text); font-weight: 700; box-shadow: 0 1px 0 #f1cfe0; }
+    .btn.primary { background: var(--primary); border-color: var(--primary); color: white; box-shadow: var(--shadow); }
+    .btn.primary:hover { background: var(--primary-dark); }
+    .btn.whatsapp { background: #25D366; border-color: #25D366; color: white; }
+    .btn.whatsapp:hover { filter: brightness(.95); }
+
+    .hero-side { display: grid; gap: 10px; }
+    .info-pill { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; }
+    
+    /* Medical Posters Section */
+    .posters-section { background: linear-gradient(135deg, #f8fafc, #e2e8f0); padding: 40px 0; }
+    .posters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 20px; }
+    .poster-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: transform 0.3s ease; }
+    .poster-card:hover { transform: translateY(-8px); }
+    .poster-image { width: 100%; height: 200px; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; }
+    .poster-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(236,72,153,0.8), rgba(244,114,182,0.6)); display: flex; align-items: center; justify-content: center; }
+    .poster-icon { font-size: 48px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .poster-content { padding: 20px; }
+    .poster-title { font-size: 20px; font-weight: 700; margin: 0 0 12px; color: var(--text); }
+    .poster-description { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0 0 15px; }
+    .poster-tag { display: inline-block; background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    
+
+    /* Sections */
+    section { padding: 28px 0; }
+    .section-title { font-size: 24px; margin: 0 0 16px; }
+
+    /* Doctors */
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { background: var(--card); border: 1px solid #f1cfe0; border-radius: 14px; padding: 18px; }
+    .card h3 { margin: 0 0 6px; }
+    .subtitle { margin: 0 0 10px; color: var(--muted); font-weight: 600; }
+    .doc { display: grid; grid-template-columns: 84px 1fr; gap: 14px; align-items: center; margin-bottom: 8px; }
+    .avatar { width: 84px; height: 84px; border-radius: 12px; object-fit: cover; border: 2px solid #ffe4e6; background: #fff0f6; box-shadow: 0 4px 10px rgba(219,39,119,.12); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 6px 10px; border-radius: 999px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 12px; font-weight: 600; color: #0f172a; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .service { background: var(--card); border: 1px solid #f1cfe0; border-radius: 12px; padding: 14px; }
+    .service h4 { margin: 0 0 6px; font-size: 16px; }
+    .service p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Timings */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .timing { background: var(--card); border: 1px solid #f1cfe0; border-radius: 12px; padding: 14px; }
+    .timing h4 { margin: 0 0 8px; }
+    .list { margin: 0; padding-left: 18px; color: var(--muted); }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; }
+    form { background: var(--card); border: 1px solid #f1cfe0; border-radius: 12px; padding: 16px; }
+    label { display: block; font-weight: 700; margin: 10px 0 6px; }
+    input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; outline: none; font-size: 14px; }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--ring); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .submit-row { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+
+    .map-card { background: var(--card); border: 1px solid #f1cfe0; border-radius: 12px; padding: 10px; }
+    .map-container { position: relative; }
+    .map-container iframe { width: 100%; height: 320px; border: 0; border-radius: 10px; }
+    .map-container:hover .map-overlay { opacity: 1; }
+
+    footer { padding: 24px 0 40px; color: var(--muted); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-card { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .posters-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo"><img src="images/Screenshot 2025-10-04 190013.png" alt="SS Skin and Pedia Clinic Logo" /></div>
+        <div>
+          <div>SS SKIN AND PEDIA CLINIC</div>
+          <small style="color:var(--muted); font-weight:600;">Dermatology • Pediatrics</small>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#posters">Health Info</a></li>
+          <li><a href="#timings">Timings</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div>
+            <h1>Compassionate Skin & Child Care</h1>
+            <p>Experienced specialists offering personalized Dermatology and Pediatrics services in one convenient clinic.</p>
+            <div class="cta">
+              <a class="btn primary" href="#contact">Book Appointment</a>
+              <a class="btn" href="tel:+916263895213">Call: +91 62638 95213</a>
+              <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/916263895213?text=Hi%20ss%20skin%20and%20pedia%20clinic%2C%20I%27d%20like%20to%20book%20an%20appointment.">WhatsApp</a>
+            </div>
+          </div>
+          <div class="hero-side">
+            <div class="info-pill">👩‍⚕️ Dr. Swati Gupta — Dermatology (Skin, Hair & Aesthetics)</div>
+            <div class="info-pill">👨‍⚕️ Dr. Siddharth Agrawal — Pediatrics (Child Specialist)</div>
+            <div class="info-pill">📍 Plot no 60, near Canara Bank, Part I, Scheme No 114, Indore, Madhya Pradesh 452010</div>
+            <div class="info-pill">🕒 Mon–Sat • 10:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors">
+      <div class="container">
+        <h2 class="section-title">Our Doctors</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="doc">
+              <img class="avatar" src="/images/Screenshot 2025-09-28 012156.png" alt="Photo of Dr. Swati Gupta, Dermatologist" />
+              <div>
+                <h3>Dr. Swati Gupta</h3>
+                <div class="subtitle">Dermatology • MBBS, MD (Dermatology)</div>
+              </div>
+            </div>
+            <p>Specialized in medical and cosmetic dermatology with a focus on acne, hair fall, pigment disorders, allergies, and advanced aesthetic procedures.</p>
+            <div class="tags" aria-label="Dermatology expertise">
+              <span class="tag">Acne & Scars</span>
+              <span class="tag">Hair Loss</span>
+              <span class="tag">Pigmentation</span>
+              <span class="tag">PRP / Microneedling</span>
+              <span class="tag">Chemical Peels</span>
+              <span class="tag">Laser Treatments</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="doc">
+              <img class="avatar" src="/images/image.png" alt="Photo of Dr. Siddharth Agrawal, Pediatrician" />
+              <div>
+                <h3>Dr. Siddharth Agrawal</h3>
+                <div class="subtitle">Pediatrics • MBBS, MD (Pediatrics)</div>
+              </div>
+            </div>
+            <p>Comprehensive pediatric care from newborn to adolescents including growth, nutrition, vaccinations, infections, and developmental guidance.</p>
+            <div class="tags" aria-label="Pediatrics expertise">
+              <span class="tag">Well-baby Clinic</span>
+              <span class="tag">Vaccinations</span>
+              <span class="tag">Growth & Nutrition</span>
+              <span class="tag">Allergies & Asthma</span>
+              <span class="tag">Fever & Infections</span>
+              <span class="tag">Adolescent Health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <div class="services">
+          <div class="service">
+            <h4>Dermatology Consultation</h4>
+            <p>Skin, hair and nail disorders, acne, rashes, pigmentation, infections</p>
+          </div>
+          <div class="service">
+            <h4>Aesthetic Procedures</h4>
+            <p>Chemical peels, microneedling, PRP, lasers, anti-ageing treatments.</p>
+          </div>
+          <div class="service">
+            <h4>Pediatrics Consultation</h4>
+            <p>Newborn to teens: growth, development, infections, allergies, asthma.</p>
+          </div>
+          <div class="service">
+            <h4>Vaccination Clinic</h4>
+            <p>All scheduled and optional vaccines with proper counseling.</p>
+          </div>
+          <div class="service">
+            <h4>Nutrition & Growth</h4>
+            <p>Feeding guidance, growth monitoring, anemia and vitamin deficiencies.</p>
+          </div>
+          <div class="service">
+            <h4>Adolescent Health</h4>
+            <p>Counseling for puberty, skin changes, acne and lifestyle habits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Medical Treatment Posters Section -->
+    <section id="posters" class="posters-section">
+      <div class="container">
+        <h2 class="section-title">Our Medical Services in Action</h2>
+        <div class="posters-grid">
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0f9ff\"/><circle cx=\"200\" cy=\"100\" r=\"60\" fill=\"%23e0f2fe\" stroke=\"%23bae6fd\" stroke-width=\"2\"/><circle cx=\"180\" cy=\"85\" r=\"8\" fill=\"%230ea5e9\"/><circle cx=\"220\" cy=\"85\" r=\"8\" fill=\"%230ea5e9\"/><path d=\"M170 120 Q200 140 230 120\" stroke=\"%230ea5e9\" stroke-width=\"3\" fill=\"none\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Dermatology Consultation</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">👩‍⚕️</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Dermatology Consultation</h3>
+              <p class="poster-description">Professional skin examination and diagnosis by Dr. Swati Gupta. Comprehensive evaluation of skin conditions, acne treatment, and personalized skincare recommendations.</p>
+              <span class="poster-tag">Skin Care</span>
+            </div>
+          </div>
+          
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0fdf4\"/><circle cx=\"200\" cy=\"100\" r=\"50\" fill=\"%23dcfce7\" stroke=\"%23bbf7d0\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"90\" r=\"6\" fill=\"%2316a34a\"/><circle cx=\"210\" cy=\"90\" r=\"6\" fill=\"%2316a34a\"/><path d=\"M180 110 Q200 125 220 110\" stroke=\"%2316a34a\" stroke-width=\"2\" fill=\"none\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Child Checkup</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">👶</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Pediatric Checkup</h3>
+              <p class="poster-description">Comprehensive child health examination by Dr. Siddharth Agrawal. Growth monitoring, developmental assessment, and preventive care for children of all ages.</p>
+              <span class="poster-tag">Child Care</span>
+            </div>
+          </div>
+          
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23fef7f7\"/><rect x=\"150\" y=\"80\" width=\"100\" height=\"40\" rx=\"20\" fill=\"%23fce7f3\" stroke=\"%23f9a8d4\" stroke-width=\"2\"/><circle cx=\"170\" cy=\"100\" r=\"8\" fill=\"%23ec4899\"/><circle cx=\"230\" cy=\"100\" r=\"8\" fill=\"%23ec4899\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Aesthetic Treatment</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">✨</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Aesthetic Procedures</h3>
+              <p class="poster-description">Advanced cosmetic treatments including chemical peels, microneedling, PRP therapy, and laser treatments for skin rejuvenation and anti-aging.</p>
+              <span class="poster-tag">Beauty Care</span>
+            </div>
+          </div>
+          
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0f9ff\"/><rect x=\"160\" y=\"70\" width=\"80\" height=\"60\" rx=\"10\" fill=\"%23dbeafe\" stroke=\"%2393c5fd\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"100\" r=\"15\" fill=\"%230ea5e9\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Vaccination</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">💉</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Vaccination Clinic</h3>
+              <p class="poster-description">Safe and professional vaccination services for children and adults. Complete immunization schedule with proper counseling and follow-up care.</p>
+              <span class="poster-tag">Immunization</span>
+            </div>
+          </div>
+          
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23fefce8\"/><circle cx=\"200\" cy=\"100\" r=\"45\" fill=\"%23fef3c7\" stroke=\"%23fde68a\" stroke-width=\"2\"/><circle cx=\"185\" cy=\"90\" r=\"5\" fill=\"%23d97706\"/><circle cx=\"215\" cy=\"90\" r=\"5\" fill=\"%23d97706\"/><path d=\"M175 110 Q200 125 225 110\" stroke=\"%23d97706\" stroke-width=\"2\" fill=\"none\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Hair Treatment</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">💇‍♀️</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Hair Loss Treatment</h3>
+              <p class="poster-description">Specialized treatment for hair loss and scalp conditions. PRP therapy, microneedling, and medical treatments for healthy hair growth.</p>
+              <span class="poster-tag">Hair Care</span>
+            </div>
+          </div>
+          
+          <div class="poster-card">
+            <div class="poster-image" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0fdf4\"/><rect x=\"150\" y=\"75\" width=\"100\" height=\"50\" rx=\"25\" fill=\"%23dcfce7\" stroke=\"%23bbf7d0\" stroke-width=\"2\"/><circle cx=\"180\" cy=\"100\" r=\"6\" fill=\"%2316a34a\"/><circle cx=\"220\" cy=\"100\" r=\"6\" fill=\"%2316a34a\"/><path d=\"M170 115 Q200 130 230 115\" stroke=\"%2316a34a\" stroke-width=\"2\" fill=\"none\"/><text x=\"200\" y=\"170\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%23064748\">Growth Monitoring</text></svg>');">
+              <div class="poster-overlay">
+                <div class="poster-icon">📏</div>
+              </div>
+            </div>
+            <div class="poster-content">
+              <h3 class="poster-title">Growth & Nutrition</h3>
+              <p class="poster-description">Comprehensive growth monitoring and nutritional counseling for children. Height, weight tracking, and dietary guidance for healthy development.</p>
+              <span class="poster-tag">Child Growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Timings -->
+    <section id="timings">
+      <div class="container">
+        <h2 class="section-title">Clinic Timings</h2>
+        <div class="grid-2">
+          <div class="timing">
+            <h4>Dermatology (Dr. Swati Gupta)</h4>
+            <ul class="list">
+              <li>Mon–Sat: 11:00 AM – 2:00 PM, 4:00 PM – 7:30 PM</li>
+              <li>Sun: By appointment</li>
+            </ul>
+          </div>
+          <div class="timing">
+            <h4>Pediatrics (Dr. Siddharth Agrawal)</h4>
+            <ul class="list">
+              <li>Mon–Sat: 10:00 AM – 2:00 PM, 4:00 PM – 7:30 PM</li>
+              <li>Sun: By appointment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact & Appointment</h2>
+        <div class="contact">
+          <form id="apptForm" aria-label="Appointment form">
+            <div class="form-row">
+              <div>
+                <label for="fullname">Full Name</label>
+                <input id="fullname" name="fullname" type="text" placeholder="Your full name" required />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="10-digit mobile" pattern="[0-9]{10}" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                  <option value="">Select department</option>
+                  <option>Dermatology — Dr. Swati Gupta</option>
+                  <option>Pediatrics — Dr. Siddharth Agrawal</option>
+                </select>
+              </div>
+              <div>
+                <label for="date">Preferred Date</label>
+                <input id="date" name="date" type="date" required />
+              </div>
+            </div>
+            <label for="concern">Describe your concern</label>
+            <textarea id="concern" name="concern" rows="4" placeholder="Briefly describe symptoms or request" required></textarea>
+            <div class="submit-row">
+              <button type="submit" class="btn primary">Submit Request</button>
+              <small id="formNote" style="color:var(--muted)">We'll confirm your slot by call/WhatsApp.</small>
+            </div>
+          </form>
+
+          <div class="map-card">
+            <h4 id="address" style="margin:6px 0 10px;">Find Us</h4>
+            <p style="margin:0 0 10px; color:var(--muted);">Plot no 60, near Canara Bank, Part I, Scheme No 114, Indore, Madhya Pradesh 452010</p>
+            <div class="map-container" onclick="openGoogleMaps()" style="cursor: pointer; position: relative;">
+              <iframe title="Clinic Location" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.123456789!2d75.8888889!3d22.719568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b4101b5%3A0x204e43824fddeaf6!2sScheme%20No%20114%2C%20Indore%2C%20Madhya%20Pradesh%20452010!5e0!3m2!1sen!2sin!4v1699999999999"></iframe>
+              <div class="map-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                <div style="background: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: 600; color: var(--primary);">
+                  Click to open in Google Maps
+                </div>
+              </div>
+            </div>
+            <div class="cta" style="margin-top:10px;">
+              <a class="btn" href="tel:+916263895213">Call Now</a>
+              <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/916263895213?text=Hi%20ss%20skin%20and%20pedia%20clinic">WhatsApp</a>
+              <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ipRxcpbJNxMhnVq67">View Location</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="yr"></span> ss skin and pedia clinic • Dr. Swati Gupta (Dermatology) & Dr. Siddharth Agrawal (Pediatrics)
+    </div>
+  </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      let name = document.querySelector("input[name='fullname']").value;
+      let phone = document.querySelector("input[name='phone']").value;
+      let dept = document.querySelector("select[name='department']").value;
+      let date = document.querySelector("input[name='date']").value;
+      let concern = document.querySelector("textarea[name='concern']").value;
+
+      // Construct the WhatsApp message
+      let message = `Hello, my name is ${name}.%0A` +
+                    `Phone: ${phone}%0A` +
+                    `Department: ${dept}%0A` +
+                    `Preferred Date: ${date}%0A` +
+                    `Concern: ${concern}`;
+
+      // Replace with your WhatsApp number (country code + number, no +, no spaces)
+      let whatsappNumber = "916263895213";
+
+      // Open WhatsApp with the message
+      let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(url, "_blank");
+    }
+
+    (function() {
+      const yr = document.getElementById('yr');
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      const form = document.getElementById('apptForm');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        
+        // Call the WhatsApp function
+        sendToWhatsApp();
+        
+        // Reset form after sending
+        form.reset();
+      });
+    })();
+
+    // Function to open Google Maps location page
+    function openGoogleMaps() {
+      const mapsUrl = 'https://maps.app.goo.gl/ipRxcpbJNxMhnVq67';
+      window.open(mapsUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
+
+
