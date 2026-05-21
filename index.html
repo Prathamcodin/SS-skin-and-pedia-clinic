@@ -6,7 +6,10 @@
   <title>ss skin and pedia clinic — Dr. Swati Gupta & Dr. Siddharth Agrawal</title>
   <meta name="description" content="ss skin and pedia clinic: Dermatology and Pediatrics care by Dr. Swati Gupta (Dermatology) and Dr. Siddharth Agrawal (Pediatrics). Book appointments, view services, timings, and location." />
   <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" type="svg+xml" href="Screenshot 2025-10-04 190013.png" />
+  <link rel="icon" type="image/svg+xml" href="images/refined_favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -19,10 +22,16 @@
       --card: #ffffff;
       --ring: rgba(236, 72, 153, 0.25);
       --shadow: 0 10px 20px rgba(219, 39, 119, 0.12);
+      --green: #2d6a4f;
+      --green-dark: #1b4332;
+      --mint: #e8f0eb;
+      --mint-light: #f4f8f5;
+      --green-border: #d8e4dc;
+      --star-gold: #f59e0b;
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
+    html, body { margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: var(--bg); }
 
     a { color: var(--primary-dark); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -129,6 +138,121 @@
     .gallery-card:hover img { transform: scale(1.03); }
     .gallery-caption { position: absolute; left: 8px; bottom: 8px; padding: 6px 10px; background: rgba(0,0,0,0.5); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; }
 
+    /* Happy Stories / Reviews */
+    .reviews-section { background: var(--mint); padding: 48px 0; }
+    .reviews-header { margin-bottom: 28px; }
+    .reviews-header h2 { margin: 0 0 8px; font-size: 28px; font-weight: 800; color: var(--green-dark); }
+    .reviews-header p { margin: 0; color: var(--muted); font-size: 15px; max-width: 560px; }
+    .reviews-wrap { position: relative; }
+    .reviews-track {
+      display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: #b7cfc0 transparent;
+    }
+    .reviews-track::-webkit-scrollbar { height: 6px; }
+    .reviews-track::-webkit-scrollbar-thumb { background: #b7cfc0; border-radius: 999px; }
+    .review-card {
+      flex: 0 0 min(100%, 320px); scroll-snap-align: start; background: white;
+      border: 1px solid var(--green-border); border-radius: 16px; padding: 20px;
+      box-shadow: 0 8px 24px rgba(45, 106, 79, 0.08); display: flex; flex-direction: column;
+    }
+    @media (min-width: 640px) { .review-card { flex-basis: 340px; } }
+    .review-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .review-user { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 44px; height: 44px; border-radius: 50%; color: white; font-size: 14px; font-weight: 700;
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .review-name { margin: 0; font-size: 14px; font-weight: 700; }
+    .review-time { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+    .review-stars { display: flex; align-items: center; gap: 2px; margin-bottom: 12px; }
+    .review-stars svg { width: 16px; height: 16px; color: var(--star-gold); }
+    .review-text { margin: 0; flex: 1; font-size: 14px; line-height: 1.6; color: #334155; }
+    .review-more {
+      margin-top: 12px; align-self: flex-start; background: none; border: none; padding: 0;
+      font-size: 14px; font-weight: 600; color: var(--green); cursor: pointer;
+    }
+    .review-more:hover { color: var(--green-dark); text-decoration: underline; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--green-border);
+      background: white; color: var(--green); cursor: pointer; display: none;
+      align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(45, 106, 79, 0.12);
+    }
+    .carousel-btn:hover { background: var(--mint-light); }
+    .carousel-btn.prev { left: -8px; }
+    .carousel-btn.next { right: -8px; }
+    @media (min-width: 640px) { .carousel-btn { display: flex; } }
+    .reviews-mobile-nav { display: flex; justify-content: center; gap: 12px; margin-top: 14px; }
+    @media (min-width: 640px) { .reviews-mobile-nav { display: none; } }
+    .reviews-mobile-nav .carousel-btn { position: static; transform: none; display: flex; width: 40px; height: 40px; }
+
+    /* FAQ */
+    .faq-section { background: white; padding: 48px 0; }
+    .faq-section .section-title { text-align: center; font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 28px; }
+    .faq-box {
+      max-width: 720px; margin: 0 auto; border: 1px solid var(--green-border); border-radius: 16px;
+      background: white; padding: 0 20px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+    }
+    .faq-item { border-bottom: 1px solid var(--green-border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left;
+      font-size: 16px; font-weight: 600; color: var(--text);
+    }
+    .faq-trigger:hover { color: var(--green); }
+    .faq-icon {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--green-border);
+      display: grid; place-items: center; font-size: 20px; font-weight: 300; line-height: 1; color: var(--green);
+    }
+    .faq-panel {
+      display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease;
+    }
+    .faq-item.is-open .faq-panel { grid-template-rows: 1fr; }
+    .faq-panel-inner { overflow: hidden; }
+    .faq-answer { margin: 0; padding: 0 48px 20px 0; font-size: 14px; line-height: 1.65; color: var(--muted); }
+    @media (min-width: 640px) { .faq-trigger { font-size: 18px; } .faq-answer { font-size: 15px; } }
+
+    /* Latest Videos */
+    .videos-section { background: var(--mint-light); padding: 48px 0; }
+    .videos-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+    .videos-head h2 { margin: 0; font-size: 28px; font-weight: 800; color: var(--green-dark); }
+    .btn-outline-green {
+      display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 10px;
+      border: 2px solid var(--green); color: var(--green); font-weight: 700; font-size: 14px;
+      background: white; text-decoration: none;
+    }
+    .btn-outline-green:hover { background: var(--green); color: white; text-decoration: none; }
+    .videos-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 640px) { .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+    @media (min-width: 900px) { .videos-grid { grid-template-columns: repeat(3, 1fr); } }
+    .video-card {
+      display: block; width: 100%; padding: 0; border: 1px solid var(--green-border); border-radius: 12px;
+      background: white; overflow: hidden; cursor: pointer; text-align: left;
+      box-shadow: 0 6px 18px rgba(45, 106, 79, 0.08); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .video-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(45, 106, 79, 0.12); }
+    .video-card.is-hidden { display: none; }
+    .video-thumb { position: relative; aspect-ratio: 16/9; background: #e2e8f0; overflow: hidden; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+    .video-card:hover .video-thumb img { transform: scale(1.03); }
+    .video-play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25); transition: background 0.2s;
+    }
+    .video-card:hover .video-play { background: rgba(0,0,0,0.35); }
+    .video-play span {
+      width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.95);
+      display: grid; place-items: center; color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .video-play svg { width: 28px; height: 28px; margin-left: 4px; fill: currentColor; }
+    .video-body { padding: 12px 16px 16px; }
+    .video-channel { margin: 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--green); }
+    .video-title { margin: 6px 0 0; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .videos-more-wrap { margin-top: 28px; text-align: center; }
+    .videos-more-wrap.is-hidden { display: none; }
+
     /* Responsive */
     @media (max-width: 900px) {
       .hero-card { grid-template-columns: 1fr; }
@@ -147,7 +271,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo"><img src="Screenshot 2025-10-04 190013.png" alt="SS Skin and Pedia Clinic Logo" /></div>
+        <div class="logo"><img src="images/Screenshot 2025-10-04 190013.png" alt="SS Skin and Pedia Clinic Logo" /></div>
         <div>
           <div>SS SKIN AND PEDIA CLINIC</div>
           <small style="color:var(--muted); font-weight:600;">Dermatology • Pediatrics</small>
@@ -158,6 +282,9 @@
           <li><a href="#doctors">Doctors</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#videos">Videos</a></li>
           <li><a href="#posters">Health Info</a></li>
           <li><a href="#timings">Timings</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -197,7 +324,7 @@
         <div class="cards">
           <div class="card">
             <div class="doc">
-              <img class="avatar" src="Screenshot 2025-09-28 012156.png" alt="Photo of Dr. Swati Gupta, Dermatologist" />
+              <img class="avatar" src="images/Screenshot 2025-09-28 012156.png" alt="Photo of Dr. Swati Gupta, Dermatologist" />
               <div>
                 <h3>Dr. Swati Gupta</h3>
                 <div class="subtitle">Dermatology • MBBS, MD (Dermatology)</div>
@@ -215,7 +342,7 @@
           </div>
           <div class="card">
             <div class="doc">
-              <img class="avatar" src="image.png" alt="Photo of Dr. Siddharth Agrawal, Pediatrician" />
+              <img class="avatar" src="images/image.png" alt="Photo of Dr. Siddharth Agrawal, Pediatrician" />
               <div>
                 <h3>Dr. Siddharth Agrawal</h3>
                 <div class="subtitle">Pediatrics • MBBS, MD (Pediatrics)</div>
@@ -274,7 +401,7 @@
         <h2 class="section-title">Our Medical Services in Action</h2>
         <div class="posters-grid">
           <div class="poster-card">
-            <img class="poster-img" src="Screenshot 2025-10-29 153814.png" alt="Dermatology Consultation" />
+            <img class="poster-img" src="images/Screenshot 2025-10-29 153814.png" alt="Dermatology Consultation" />
             <div class="poster-content">
               <h3 class="poster-title">Dermatology Consultation</h3>
               <p class="poster-description">Professional skin examination and diagnosis by Dr. Swati Gupta. Comprehensive evaluation of skin conditions, acne treatment, and personalized skincare recommendations.</p>
@@ -283,7 +410,7 @@
           </div>
           
           <div class="poster-card">
-            <img class="poster-img" src="pedia_consultation.png" alt="Pediatric Checkup" />
+            <img class="poster-img" src="images/pedia_consultation.png" alt="Pediatric Checkup" />
             <div class="poster-content">
               <h3 class="poster-title">Pediatric Checkup</h3>
               <p class="poster-description">Comprehensive child health examination by Dr. Siddharth Agrawal. Growth monitoring, developmental assessment, and preventive care for children of all ages.</p>
@@ -292,7 +419,7 @@
           </div>
           
           <div class="poster-card">
-            <img class="poster-img" src="aesthetic_procedures.png" alt="Aesthetic Procedures" />
+            <img class="poster-img" src="images/aesthetic_procedures.png" alt="Aesthetic Procedures" />
             <div class="poster-content">
               <h3 class="poster-title">Aesthetic Procedures</h3>
               <p class="poster-description">Advanced cosmetic treatments including chemical peels, microneedling, PRP therapy, and laser treatments for skin rejuvenation and anti-aging.</p>
@@ -301,7 +428,7 @@
           </div>
           
           <div class="poster-card">
-            <img class="poster-img" src="vaccinationclinic.png" alt="Vaccination Clinic" />
+            <img class="poster-img" src="images/vaccinationclinic.png" alt="Vaccination Clinic" />
             <div class="poster-content">
               <h3 class="poster-title">Vaccination Clinic</h3>
               <p class="poster-description">Safe and professional vaccination services for children and adults. Complete immunization schedule with proper counseling and follow-up care.</p>
@@ -310,7 +437,7 @@
           </div>
           
           <div class="poster-card">
-            <img class="poster-img" src="haircare_treatment.png" alt="Hair Loss Treatment" />
+            <img class="poster-img" src="images/haircare_treatment.png" alt="Hair Loss Treatment" />
             <div class="poster-content">
               <h3 class="poster-title">Hair Loss Treatment</h3>
               <p class="poster-description">Specialized treatment for hair loss and scalp conditions. PRP therapy, microneedling, and medical treatments for healthy hair growth.</p>
@@ -319,7 +446,7 @@
           </div>
           
           <div class="poster-card">
-            <img class="poster-img" src="growthandnutrition.png" alt="Growth and Nutrition" />
+            <img class="poster-img" src="images/growthandnutrition.png" alt="Growth and Nutrition" />
             <div class="poster-content">
               <h3 class="poster-title">Growth & Nutrition</h3>
               <p class="poster-description">Comprehensive growth monitoring and nutritional counseling for children. Height, weight tracking, and dietary guidance for healthy development.</p>
@@ -337,25 +464,372 @@
         <h2 class="section-title">Clinic Gallery</h2>
         <div class="gallery-grid">
           <a class="gallery-card" href="images/reception.png" target="_blank" rel="noopener">
-            <img src="reception.png" alt="Clinic reception area" />
+            <img src="images/reception.png" alt="Clinic reception area" />
             <span class="gallery-caption">Reception</span>
           </a>
           <a class="gallery-card" href="images/consulttion roo.png" target="_blank" rel="noopener">
-            <img src="consulttion roo.png" alt="Consultation room" />
+            <img src="images/consulttion roo.png" alt="Consultation room" />
             <span class="gallery-caption">Consultation</span>
           </a>
           <a class="gallery-card" href="images/waiting room.png" target="_blank" rel="noopener">
-            <img src="waiting room.png" alt="Waiting area" />
+            <img src="images/waiting room.png" alt="Waiting area" />
             <span class="gallery-caption">Waiting Area</span>
           </a>
           <a class="gallery-card" href="images/entrance.png" target="_blank" rel="noopener">
-            <img src="entrance.png" alt="Entrance" />
+            <img src="images/entrance.png" alt="Entrance" />
             <span class="gallery-caption">Entrance</span>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- Happy Stories / Reviews -->
+    <section id="reviews" class="reviews-section">
+      <div class="container">
+        <div class="reviews-header">
+          <h2>Happy Stories</h2>
+          <p>Real experiences from families and patients who trust SS Skin &amp; Pedia Clinic.</p>
+        </div>
+        <div class="reviews-wrap">
+          <button type="button" class="carousel-btn prev" id="reviewsPrev" aria-label="Previous reviews">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="reviews-track" id="reviewsTrack" role="region" aria-label="Patient reviews carousel">
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#2d6a4f">PS</div>
+                  <div><p class="review-name">Priya Sharma</p><p class="review-time">2 months ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-label="Verified"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">Dr. Swati is wonderful with skin concerns. My acne improved within weeks and she explained every step clearly. The clinic is clean and staff is polite.</p>
+            </article>
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#40916c">RM</div>
+                  <div><p class="review-name">Rahul Mehta</p><p class="review-time">5 months ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">We bring our 3-year-old to Dr. Siddharth for vaccinations and fever visits. He is patient with kids and gives practical advice on nutrition and growth.</p>
+            </article>
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#1b4332">AD</div>
+                  <div><p class="review-name">Anita Desai</p><p class="review-time">1 month ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">Had PRP sessions for hair fall — noticeable reduction in shedding. Booking via WhatsApp is easy and waiting time is reasonable.</p>
+            </article>
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#52b788">VJ</div>
+                  <div><p class="review-name">Vikram Joshi</p><p class="review-time">8 months ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">Both dermatology and pediatrics under one roof is very convenient for our family. Dermatology consultation was thorough and treatment plan was affordable.</p>
+            </article>
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#74c69d">NK</div>
+                  <div><p class="review-name">Neha Kapoor</p><p class="review-time">3 months ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">My daughter's eczema was troubling us for months. Dr. Siddharth adjusted the routine and follow-up was caring. Highly recommend for child skin issues too.</p>
+            </article>
+            <article class="review-card" data-review>
+              <div class="review-top">
+                <div class="review-user">
+                  <div class="review-avatar" style="background:#2d6a4f">SP</div>
+                  <div><p class="review-name">Suresh Patidar</p><p class="review-time">6 months ago</p></div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              </div>
+              <div class="review-stars" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4285F4"/><path d="M9 12.2l2 2 4-4.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              </div>
+              <p class="review-text">Professional aesthetic procedures with honest expectations. Chemical peel results were visible after the second session. Good experience overall.</p>
+            </article>
+          </div>
+          <button type="button" class="carousel-btn next" id="reviewsNext" aria-label="Next reviews">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="reviews-mobile-nav">
+            <button type="button" class="carousel-btn prev" data-reviews-prev aria-label="Previous reviews">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" class="carousel-btn next" data-reviews-next aria-label="Next reviews">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-box" id="faqBox">
+          <div class="faq-item is-open">
+            <button type="button" class="faq-trigger" aria-expanded="true">
+              <span>How do I book an appointment?</span>
+              <span class="faq-icon" aria-hidden="true">−</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">You can book through our website form (sent via WhatsApp), call +91 62638 95213, or message us on WhatsApp. We confirm your slot by call or WhatsApp with the doctor's available timing.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Do you accept walk-in patients?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">Walk-ins are welcome subject to availability. Appointments are recommended for shorter waiting times, especially for pediatric vaccinations and aesthetic procedures.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What are the consultation charges?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">Consultation fees vary by department and type of visit (first follow-up, procedure). Please call or WhatsApp the clinic for current dermatology and pediatrics consultation rates before your visit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What are the clinic timings?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">Pediatrics (Dr. Siddharth): Mon–Sat 10:00 AM – 2:00 PM &amp; 4:00 PM – 7:30 PM. Dermatology (Dr. Swati): Mon–Sat 11:00 AM – 2:00 PM &amp; 4:00 PM – 7:30 PM. Sunday visits are by appointment only.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Which vaccinations are available for children?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">We provide scheduled immunizations per IAP guidelines including optional vaccines. Bring your child's vaccination card; our team will counsel you on due doses and any mild post-vaccine care.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What skin treatments do you offer?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">Medical dermatology for acne, pigmentation, hair fall, allergies, and infections. Aesthetic options include chemical peels, microneedling, PRP, and laser-based treatments after consultation with Dr. Swati Gupta.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>Do you accept insurance or health cards?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">We primarily operate on direct payment (cash, UPI, and cards where available). For insurance reimbursement, please check with your provider; we can provide consultation bills and prescriptions as required.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>What should I bring for my first visit?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="faq-answer">Carry a valid ID, prior prescriptions or reports, allergy list, and for children — vaccination card and growth records if any. For skin concerns, note products or medicines you currently use.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Videos -->
+    <section id="videos" class="videos-section">
+      <div class="container">
+        <div class="videos-head">
+          <h2>Latest Videos</h2>
+          <a class="btn-outline-green" href="https://www.youtube.com/@dr_swag93/videos" target="_blank" rel="noopener noreferrer">View All</a>
+        </div>
+        <div class="videos-grid" id="videosGrid">
+          <button type="button" class="video-card" data-video-id="FH7QkzPFy9k">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/FH7QkzPFy9k/hqdefault.jpg" alt="Diaper Dermatitis" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Diaper Dermatitis</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card" data-video-id="OdSNdCWLid0">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/OdSNdCWLid0/hqdefault.jpg" alt="Summer cooler" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Summer cooler</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card" data-video-id="iiojNj_Tp_s">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/iiojNj_Tp_s/hqdefault.jpg" alt="Skin tanning" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Skin tanning</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card" data-video-id="LA04V4DmvQQ">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/LA04V4DmvQQ/hqdefault.jpg" alt="Skin tanning in Summers" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Skin tanning in Summers</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card" data-video-id="NgYX-OIT-9o">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/NgYX-OIT-9o/hqdefault.jpg" alt="Talcum powder in babies" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Talcum powder in babies</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card" data-video-id="tMSqJXMbWyE">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/tMSqJXMbWyE/hqdefault.jpg" alt="New born hairloss" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">New born hairloss</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="cNpJEASlHJA" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/cNpJEASlHJA/hqdefault.jpg" alt="Dark underarms" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Dark underarms</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="ACgRmfq8AY4" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/ACgRmfq8AY4/hqdefault.jpg" alt="Sunscreen game" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Sunscreen game</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="oFqvX4FuDF8" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/oFqvX4FuDF8/hqdefault.jpg" alt="Smelly feet" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Smelly feet</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="Fjk2qGodYHg" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/Fjk2qGodYHg/hqdefault.jpg" alt="Eat ur sunscreen" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Eat ur sunscreen</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="t1Bismx8zCU" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/t1Bismx8zCU/hqdefault.jpg" alt="Dermat approved hand care" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Dermat approved hand care</h3>
+            </div>
+          </button>
+          <button type="button" class="video-card is-hidden" data-video-id="ro4sc-V6gOY" data-extra-video>
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/ro4sc-V6gOY/hqdefault.jpg" alt="Sunscreen awareness" loading="lazy" />
+              <div class="video-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+            </div>
+            <div class="video-body">
+              <p class="video-channel">Dr. Swati Gupta</p>
+              <h3 class="video-title">Sunscreen awareness</h3>
+            </div>
+          </button>
+        </div>
+        <div class="videos-more-wrap" id="videosMoreWrap">
+          <button type="button" class="btn-outline-green" id="videosMoreBtn">View More</button>
+        </div>
+      </div>
+    </section>
 
     <!-- Timings -->
     <section id="timings">
@@ -492,11 +966,111 @@
       const mapsUrl = 'https://maps.app.goo.gl/ipRxcpbJNxMhnVq67';
       window.open(mapsUrl, '_blank');
     }
+
+    // Reviews carousel
+    (function initReviews() {
+      const track = document.getElementById('reviewsTrack');
+      if (!track) return;
+
+      function scrollReviews(dir) {
+        const amount = Math.min(track.clientWidth * 0.85, 360);
+        track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+      }
+
+      document.getElementById('reviewsPrev')?.addEventListener('click', () => scrollReviews(-1));
+      document.getElementById('reviewsNext')?.addEventListener('click', () => scrollReviews(1));
+      document.querySelectorAll('[data-reviews-prev]').forEach((btn) => {
+        btn.addEventListener('click', () => scrollReviews(-1));
+      });
+      document.querySelectorAll('[data-reviews-next]').forEach((btn) => {
+        btn.addEventListener('click', () => scrollReviews(1));
+      });
+
+      const TRUNCATE = 140;
+      document.querySelectorAll('[data-review]').forEach((card) => {
+        const textEl = card.querySelector('.review-text');
+        if (!textEl) return;
+        const full = textEl.textContent.trim();
+        if (full.length <= TRUNCATE) return;
+
+        textEl.dataset.full = full;
+        textEl.textContent = full.slice(0, TRUNCATE).trim() + '…';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'review-more';
+        btn.textContent = 'Read more';
+        btn.addEventListener('click', () => {
+          const expanded = btn.dataset.expanded === 'true';
+          if (expanded) {
+            textEl.textContent = full.slice(0, TRUNCATE).trim() + '…';
+            btn.textContent = 'Read more';
+            btn.dataset.expanded = 'false';
+          } else {
+            textEl.textContent = full;
+            btn.textContent = 'Show less';
+            btn.dataset.expanded = 'true';
+          }
+        });
+        card.appendChild(btn);
+      });
+    })();
+
+    // FAQ accordion
+    (function initFaq() {
+      const box = document.getElementById('faqBox');
+      if (!box) return;
+
+      box.querySelectorAll('.faq-item').forEach((item) => {
+        const trigger = item.querySelector('.faq-trigger');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', () => {
+          const isOpen = item.classList.contains('is-open');
+
+          box.querySelectorAll('.faq-item').forEach((other) => {
+            other.classList.remove('is-open');
+            const t = other.querySelector('.faq-trigger');
+            const icon = other.querySelector('.faq-icon');
+            if (t) t.setAttribute('aria-expanded', 'false');
+            if (icon) icon.textContent = '+';
+          });
+
+          if (!isOpen) {
+            item.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            const icon = item.querySelector('.faq-icon');
+            if (icon) icon.textContent = '−';
+          }
+        });
+      });
+    })();
+
+    // Videos grid
+    (function initVideos() {
+      const grid = document.getElementById('videosGrid');
+      const moreBtn = document.getElementById('videosMoreBtn');
+      const moreWrap = document.getElementById('videosMoreWrap');
+      if (!grid) return;
+
+      grid.querySelectorAll('.video-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-video-id');
+          if (id) window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener,noreferrer');
+        });
+      });
+
+      if (moreBtn && moreWrap) {
+        moreBtn.addEventListener('click', () => {
+          grid.querySelectorAll('[data-extra-video]').forEach((card) => {
+            card.classList.remove('is-hidden');
+          });
+          moreWrap.classList.add('is-hidden');
+        });
+      }
+    })();
   </script>
 </body>
 </html>
-
-
-
 
 
