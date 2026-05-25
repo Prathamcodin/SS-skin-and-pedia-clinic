@@ -69,6 +69,41 @@
     .btn.primary:hover { background: var(--primary-dark); }
     .btn.whatsapp { background: #25D366; border-color: #25D366; color: white; }
     .btn.whatsapp:hover { filter: brightness(.95); }
+    /* Social Links Container */
+    .social-links-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .social-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .google-btn { background-color: #4285F4; }
+    .instagram-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .youtube-btn { background-color: #FF0000; }
 
     .hero-side { display: grid; gap: 10px; }
     .info-pill { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: white; border: 1px solid #e2e8f0; border-radius: 12px; }
@@ -306,6 +341,17 @@
               <a class="btn primary" href="#contact">Book Appointment</a>
               <a class="btn" href="tel:+916263895213">Call: +91 62638 95213</a>
               <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/916263895213?text=Hi%20ss%20skin%20and%20pedia%20clinic%2C%20I%27d%20like%20to%20book%20an%20appointment.">WhatsApp</a>
+            </div>
+            <div class="social-links-container">
+              <a href="https://maps.app.goo.gl/RFBZseDkQgYJrRx37?g_st=ic" target="_blank" rel="noopener noreferrer" class="social-btn google-btn">
+                Google Profile
+              </a>
+              <a href="https://www.instagram.com/ss_skinandpediaclinic_indore/" target="_blank" rel="noopener noreferrer" class="social-btn instagram-btn">
+                Instagram
+              </a>
+              <a href="https://www.youtube.com/@dr_swag93" target="_blank" rel="noopener noreferrer" class="social-btn youtube-btn">
+                YouTube
+              </a>
             </div>
           </div>
           <div class="hero-side">
